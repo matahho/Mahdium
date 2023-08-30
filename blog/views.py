@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from .models import Post
+from datetime import datetime
 
 data = [
 
@@ -20,8 +21,9 @@ data = [
 
 
 def home (request):
-    
-    return render(request , "blog/home.html" , context={'posts':data , 'title':'Home'})
+    currentdate = datetime.now().strftime("%H:%M:%S")
+    print ("here" , currentdate)
+    return render(request , "blog/home.html" , context={'posts':Post.objects.all() , 'title':'Home' , 'currentTime':currentdate})
 
 
 def about (request):
