@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from users import views as register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , include('blog.urls'))
+    path('' , include('blog.urls')),
+    path('register/' , register_view.register )
 ]
 
